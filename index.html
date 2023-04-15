@@ -85,28 +85,28 @@
   </button>
   <div class="indicatorDot" style="left:30%; top:30%;"></div>
   <script>
-    // window.addEventListener('load', function (ev) {
-    //   // Download main.dart.js
-    //   _flutter.loader.loadEntrypoint({
-    //     serviceWorker: {
-    //       serviceWorkerVersion: serviceWorkerVersion,
-    //     },
-    //     onEntrypointLoaded: function (engineInitializer) {
-    //       engineInitializer.initializeEngine().then(function (appRunner) {
-    //         appRunner.runApp();
-    //       });
-    //     }
-    //   });
-    // });
-    screen.orientation.unlock()
-    ////function getAccel() {
-    DeviceMotionEvent.requestPermission().then(response => {
-      if (response == 'granted') {
-        console.log("accelerometer permission granted");
-        // Do stuff here
-      }
+    window.addEventListener('load', function (ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function (engineInitializer) {
+          engineInitializer.initializeEngine().then(function (appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
     });
-    //}
+    screen.orientation.unlock()
+    function getAccel() {
+      DeviceMotionEvent.requestPermission().then(response => {
+        if (response == 'granted') {
+          console.log("accelerometer permission granted");
+          // Do stuff here
+        }
+      });
+    }
    // const response = confirm("Are you sure you want to do that?");
   </script>
   <script src="visibility_handler.js"></script>
