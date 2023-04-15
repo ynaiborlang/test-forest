@@ -80,6 +80,10 @@
 
 <body>
   <div class="loader"></div>
+  <button id="accelPermsButton" style="height:50px;" onclick="getAccel()">
+    <h1>Get Accelerometer Permissions</h1>
+  </button>
+  <div class="indicatorDot" style="left:30%; top:30%;"></div>
   <script>
     // window.addEventListener('load', function (ev) {
     //   // Download main.dart.js
@@ -95,14 +99,13 @@
     //   });
     // });
     screen.orientation.unlock()
-    if (typeof DeviceMotionEvent.requestPermission === 'function') {
-      DeviceMotionEvent.requestPermission()
-        .then(permissionState => {
-          if (permissionState === 'granted') {
-            // Permission granted, accelerometer can be accessed
-          }
-        })
-        .catch(console.error);
+    function getAccel() {
+      DeviceMotionEvent.requestPermission().then(response => {
+        if (response == 'granted') {
+          console.log("accelerometer permission granted");
+          // Do stuff here
+        }
+      });
     }
    // const response = confirm("Are you sure you want to do that?");
   </script>
